@@ -39,11 +39,11 @@ Please note that this is a pre-release version. Use at your own risk.
 
 Download [sagemath_docker_guide-installer](https://github.com/soehms/projects_docker_guide/releases/download/0.2/sagemath_docker_guide-0.2-installer.ps1). Open your download folder and mark the downloaded file. Open the context menue by clicking the right mouse key. Select *Run with Powershell*:
 
-![Run with Powershell](screenshots/RunWithPowershell.png)
+![Run with Powershell](screenshots/sagemath_docker_guide/RunWithPowershell.png)
 
 After that, you should see a SageMath icon (labeled *SageMath Docker Guide*) on your desktop.
 
-![Installation of SageMath Docker Guide](screenshots/InstallGuide.png)
+![Installation of SageMath Docker Guide](screenshots/sagemath_docker_guide/InstallGuide.png)
 
 Simply click on the icon to launch the application.
 
@@ -57,37 +57,37 @@ If you already have Docker Desktop on your computer, you can [skip this section]
 
 If you don't have Docker Desktop installed yet, you'll see the following screen:
 
-![Installation step 1](screenshots/Installation1.png)
+![Installation step 1](screenshots/sagemath_docker_guide/Installation1.png)
 
 After you accept to start the installation, the following hint will appear:
 
-![Installation step 2](screenshots/Installation2.png)
+![Installation step 2](screenshots/sagemath_docker_guide/Installation2.png)
 
 The installer itself will also ask you for your consent:
 
-![Installation step 3](screenshots/Installation3.png)
+![Installation step 3](screenshots/sagemath_docker_guide/Installation3.png)
 
 The installation of Docker Desktop will take some time. At the end you will be asked to restart your computer:
 
-![Installation step 4](screenshots/Installation4.png)
+![Installation step 4](screenshots/sagemath_docker_guide/Installation4.png)
 
 After your computer boots back up, Docker Desktop will ask you to accept a *Subscription Service Agreement*:
 
-![Subscription Service Agreement](screenshots/Agreement.png)
+![Subscription Service Agreement](screenshots/sagemath_docker_guide/Agreement.png)
 
-![Finshing](screenshots/Finish.png)
+![Finshing](screenshots/sagemath_docker_guide/Finish.png)
 
 The next agreement you will be asked for will appear on this screen:
 
-![Docker Desktop Privileged Helper](screenshots/PrivilegedHelper.png)
+![Docker Desktop Privileged Helper](screenshots/sagemath_docker_guide/PrivilegedHelper.png)
 
 Docker Desktop will then ask you some questions that you can skip:
 
-![Welcome to Docker](screenshots/WelcomeDocker.png)
+![Welcome to Docker](screenshots/sagemath_docker_guide/WelcomeDocker.png)
 
 Finally, it will try to start the *Docker Engine*, which is the only thing needed for the *Projects Docker Guide*. If it fails, you will see a screen like this:
 
-![Unexpected WSL error](screenshots/UnexpectedWSLerror.png)
+![Unexpected WSL error](screenshots/sagemath_docker_guide/UnexpectedWSLerror.png)
 
 This most likely happens if your CPU virtualization technology is not enabled in your BIOS setup. In this case, try to find help on [this site](https://support.microsoft.com/en-us/windows/enable-virtualization-on-windows-c5578302-6e43-4b4b-a449-8ced115f58e1).
 If this does not solve the problem, you should follow the instructions in the [Docker documentation](https://docs.docker.com/desktop/install/windows-install/).
@@ -100,11 +100,11 @@ If your computer starts Docker Desktop automatically when it boots, you can [ski
 
 If the Docker engine is not already running, you will see the following screen:
 
-![Deamon not running](screenshots/DeamonNotRunning.png)
+![Deamon not running](screenshots/sagemath_docker_guide/DeamonNotRunning.png)
 
 Just wait until the Docker Desktop app opens and shows that the engine is running (green icon in the bottom left corner of the window), then click *Retry* (in the screenshot *Wiederholen* in german). As soon as a window titled *SageMath Docker Guide ...* opens you may close the Docker Desktop app:
 
-![Installation success](screenshots/InstallationSuccess.png)
+![Installation success](screenshots/sagemath_docker_guide/InstallationSuccess.png)
 
 [Go back to the Table of Contents](#TOF)
 
@@ -114,19 +114,19 @@ If you already have downloaded SageMath from Docker hub, you can [skip this sect
 
 If you don't have, you will see the following screen:
 
-![Repository list](screenshots/RepositoryList.png)
+![Repository list](screenshots/sagemath_docker_guide/RepositoryList.png)
 
 The first line takes you to the stable software versions of SageMath, the second to pre-release versions that do not guarantee that SageMath will run stable. The other lines are intended for advanced users. After selecting the desired line, press the OK button. You can also use the up and down arrow keys to select a line and then press Enter. A new window will open with the available software versions that you can download:
 
-![List of download versions](screenshots/ListOfDownloadVersions.png)
+![List of download versions](screenshots/sagemath_docker_guide/ListOfDownloadVersions.png)
 
 Again select the line of your choice and press OK. The download progress will be displayed in a separate window. The following screenshot is from the download of version 10.5.beta3 of the SageMath development version:
 
-![Download development version](screenshots/DownloadDev.png)
+![Download development version](screenshots/sagemath_docker_guide/DownloadDev.png)
 
 Depending on the quality of your internet connection, this may take some time. If you interrupt it, it will resume from where you interrupted it when you restart the SageMath Docker Guide:
 
-![Download Computop repeated](screenshots/DownloadComputopRepeated.png)
+![Download Computop repeated](screenshots/sagemath_docker_guide/DownloadComputopRepeated.png)
 
 [Go back to the Table of Contents](#TOF)
 
@@ -136,15 +136,15 @@ If you have already created a session, you can [skip this section](#2.5).
 
 If not, after starting *SageMath Docker Guide* you will see a list of software versions you have downloaded before (following the former section):
 
-![List of downloaded software](screenshots/ListOfImages.png)
+![List of downloaded software](screenshots/sagemath_docker_guide/ListOfImages.png)
 
 Select one of these entries and press the OK button. If the software was downloaded from a repository that offers multiple apps (as can be seen in the last column of the *List of software that can be downloaded* window in the previous section), you will need to select an app in the next window:
 
-![Selection of application](/screenshots/AppSelectionWindow.png)
+![Selection of application](/screenshots/sagemath_docker_guide/AppSelectionWindow.png)
 
 After that, or if you don't need to select the app, you will be shown a *List of sessions that have been created or used formerly*:
 
-![List of sessions](screenshots/ListOfSessions.png)
+![List of sessions](screenshots/sagemath_docker_guide/ListOfSessions.png)
 
 The naming scheme of the sessions is as follows: It starts with a prefix according to the app:
 
@@ -155,7 +155,7 @@ The naming scheme of the sessions is as follows: It starts with a prefix accordi
 
 The prefix is followed by a part that points to the folder you can access while working with SageMath. By default, this is your home directory. You can change this in the *SageMath Docker Guide* icon settings in the `Working Directory` field, for example by changing `%HOMEDRIVE%%HOMEPATH%` to `%HOMEDRIVE%%HOMEPATH%\sage` if you prefer to work in a subfolder `sage` of your home directory.
 
-![Icon settings](screenshots/IconSettings.png)
+![Icon settings](screenshots/sagemath_docker_guide/IconSettings.png)
 
 If you have more than one directory for your SageMath work, you should create according copies of the icon.
 
@@ -171,16 +171,16 @@ When you see the *List of sessions ...* window, you are ready to start working w
 
 If the session name is prefixed with "S-", a new terminal will open at the Sage prompt. Follow the [SageMath documentation](https://doc.sagemath.org/) to use SageMath.
 
-![S-session selection](screenshots/S-SessionSelection.png)
+![S-session selection](screenshots/sagemath_docker_guide/S-SessionSelection.png)
 
 The SageMath functions [load](https://doc.sagemath.org/html/en/reference/repl/sage/repl/load.html#sage.repl.load.load) and [save](https://doc.sagemath.org/html/en/reference/misc/sage/misc/persist.html#sage.misc.persist.save) give you access to your Windows folder according to the session name (see previous section).
 
-![S-session connected](screenshots/S-SessionConnected.png)
-![S-session work](screenshots/S-SessionWork.png)
+![S-session connected](screenshots/sagemath_docker_guide/S-SessionConnected.png)
+![S-session work](screenshots/sagemath_docker_guide/S-SessionWork.png)
 
 In SageMath you can use `ls` to view the files in your folder. In the case of the screenshot this is `C:\Users\sebastian`
 
-![S-session working directory](screenshots/S-SessionWorkingDir.png)
+![S-session working directory](screenshots/sagemath_docker_guide/S-SessionWorkingDir.png)
 
 [Go back to the Table of Contents](#TOF)
 
@@ -188,27 +188,27 @@ In SageMath you can use `ls` to view the files in your folder. In the case of th
 
 If the session name is prefixed with `N-`, a new tab titled *Home* will open in your default browser, displaying the list of files in your folder. If this is the first time connecting to the session, this may take a few seconds.
 
-![N-session Home tab](screenshots/N-SessionHomeTab.png)
+![N-session Home tab](screenshots/sagemath_docker_guide/N-SessionHomeTab.png)
 
 The notebook provides special features for some of the files you already have there, but the most important file type for working with the notebook are those with the `.ipynb` extension. A handy way to learn more about SageMath notebooks is to download a relevant tutorial file, for example [sage_tutorial](https://github.com/davidlowryduda/notebooks/blob/master/sage_tutorial.ipynb). In the example in the screenshot, it was downloaded to the default *Download* folder. If you click on that folder on the *Home* tab, the file will appear there.
 
-![N-session Home tab sub-folder](screenshots/N-SessionHomeTabSubFolder.png)
+![N-session Home tab sub-folder](screenshots/sagemath_docker_guide/N-SessionHomeTabSubFolder.png)
 
 If you select it and then click *Open*, a new tab will open displaying the notebook.
 
-![N-session notebook tab](screenshots/N-SessionNotebookTab.png)
+![N-session notebook tab](screenshots/sagemath_docker_guide/N-SessionNotebookTab.png)
 
 The cells of it can be executed by the play button. All cells containing Sage code are executed with the version of SageMath for which the session has been created (in this case 10.4). If you want to create your own notebook, go back to the *Home* tab, click on *New* and select the line containing the version of SageMath for which this session has been created:
 
-![N-session create new notebook](screenshots/N-SessionCreateNewNotebook.png)
+![N-session create new notebook](screenshots/sagemath_docker_guide/N-SessionCreateNewNotebook.png)
 
 A new tab will open with the title *Untitled*. If you like, write some SageMath code in the first cell and press the *Play* button to see if it works:
 
-![N-session Untitled tab](screenshots/N-SessionsUntitledTab.png)
+![N-session Untitled tab](screenshots/sagemath_docker_guide/N-SessionsUntitledTab.png)
 
 Give your new notebook a name using the `Save Notebook As` entry in the `File` menu:
 
-![N-session name file](screenshots/N-SessionsNameFile.png)
+![N-session name file](screenshots/sagemath_docker_guide/N-SessionsNameFile.png)
 
 For more information on using Jupyter notebooks, see their [documentation](https://docs.jupyter.org/en/latest/).
 
@@ -218,11 +218,11 @@ For more information on using Jupyter notebooks, see their [documentation](https
 
 Sessions prefixed with `B-` require some experience with Linux operating systems. This session type is automatically set for repositories other than `sagemath/sagemath`:
 
-![B-session selection](screenshots/B-SessionSelection.png)
+![B-session selection](screenshots/sagemath_docker_guide/B-SessionSelection.png)
 
 These sessions open a bash terminal where you can start SageMath by typing `sage` and then pressing `Enter`. After that, it is similar to an `S-` session (see section 2.5.1). The main difference is that the terminal does not close when you exit SageMath by typing `quit` or `exit`. This takes you back to the `bash` prompt.
 
-![B-session connected](screenshots/B-SessionConnected.png)
+![B-session connected](screenshots/sagemath_docker_guide/B-SessionConnected.png)
 
 The advantage of this session type is that you can experiment with the SageMath library code. If your session belongs to the `sagemath/sagemath-dev` repository, you will find the code under `/home/sage/sage/src/sage` (as you can see in the screenshot above). If you make changes to Python files (extension `.py`), they will take effect immediately after restarting SageMath. Changes to *Cython* files (extension `.pyx`) require compilation, which can be done with `sage -b` (or `sage -br` to automatically start SageMath after compilation). For more information about SageMath development, see the [Developer Information Page](https://www.sagemath.org/development.html) and the [Developer Guide](https://doc.sagemath.org/html/en/developer/index.html).
 
@@ -237,7 +237,7 @@ Your sessions don't take up much space on your computer, but you may still want 
 To delete a session, simply select the `Delete session` line in the *List of sessions that have been created or used formerly* window. A new window will open showing all the sessions that can be deleted. You can also select multiple lines here.
 
 
-![Delete sessions](screenshots/DeleteSessions.png)
+![Delete sessions](screenshots/sagemath_docker_guide/DeleteSessions.png)
 
 After pressing OK, all selected sessions are deleted. Note that a session contains data that is not stored in your working directory. This data is lost when the session is deleted. This data is:
 
@@ -253,15 +253,15 @@ After pressing OK, all selected sessions are deleted. Note that a session contai
 
 If you want to delete a software version that you no longer use, you can do so as follows: First, in the *List of sessions that have been created or used formerly* window, select the `Create new session` option. In the *List of software that have been downloaded formerly* window, select the `Delete software` line. The following window will then open:
 
-![Delete software selection](screenshots/DeleteSoftwareSelection.png)
+![Delete software selection](screenshots/sagemath_docker_guide/DeleteSoftwareSelection.png)
 
 In the example above, we want to delete `sagemath\sagemath:10.5.beta5`. You can use a multi-line selection in this window. However, it is not possible to delete a software if there is still a session using it. In such a case, the following window opens:
 
-![Delete software dependencies](screenshots/DeleteSoftwareDependencies.png)
+![Delete software dependencies](screenshots/sagemath_docker_guide/DeleteSoftwareDependencies.png)
 
 If you really want to delete the software, you need to select all the lines that appear there and press OK. Then you need to navigate again to the window that allows you to remove the software (as described above). Now, if you try it a second time, you will see a screen like this which confirms that the software has been removed:
 
-![Delete software done](screenshots/DeleteSoftwareDone.png)
+![Delete software done](screenshots/sagemath_docker_guide/DeleteSoftwareDone.png)
 
 [Go back to the Table of Contents](#TOF)
 
@@ -298,7 +298,7 @@ If you no longer want to use *SageMath Docker Guide* but want to keep *Docker De
 
 If you don't like to use *Docker Desktop* any more, in addition to the steps above, go to the Windows software uninstall page and search for *Docker Desktop*:
 
-![Uninstall Docker Desktop](screenshots/UninstallDockerDesktop.png)
+![Uninstall Docker Desktop](screenshots/sagemath_docker_guide/UninstallDockerDesktop.png)
 
 To get there hit the Windows key, type `uninstall` into the search field and launch the suggested app. To start the uninstallation, click on the three point and select `uninstall` and follow the instructions of the uninstaller.
 
@@ -316,7 +316,7 @@ Instead of following the installation instructions for Windows as described in [
 
 The main difference from using it on Windows is the appearance of the selection windows. On Linux they look like the following example:
 
-![Linux sessions](screenshots/LinuxSessions.png)
+![Linux sessions](screenshots/sagemath_docker_guide/LinuxSessions.png)
 
 Here you have to select a line with the space key and then press Enter.
 
