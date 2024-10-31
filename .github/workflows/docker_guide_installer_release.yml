@@ -1,0 +1,59 @@
+name: Copy Docker-Guide installer to Release Notes assets
+
+on:
+  workflow_dispatch:
+    # Allow to run manually
+
+jobs:
+  copy-script:
+
+    runs-on: ubuntu-latest
+    outputs:
+      upload_url: ${{ steps.create_release.outputs.upload_url }}
+      version: ${{ steps.extract_version.outputs.version }}
+    steps:
+
+    - name: Checkout repo
+      uses: actions/checkout@v3
+
+    - name: Extract version from Tag
+      id: extract_version
+      run: |
+        git fetch --depth=1 origin +refs/tags/*:refs/tags/*
+        VERSION=$(git tag --sort=creatordate | tail -1)
+        echo "VERSION=$VERSION" >> $GITHUB_ENV
+        echo "version=$VERSION" >> $GITHUB_OUTPUT
+
+    - name: Get latest release version
+      id: get_latest_release
+      run: |
+        LATEST_VERSION=$(curl -s https://api.github.com/repos/${{ github.repository }}/releases/latest | jq -r '.tag_name // "0.0"' | sed 's/v//')
+        echo "LATEST_VERSION=$LATEST_VERSION" >> $GITHUB_ENV
+
+    - name: Create GitHub Release
+      if: ${{ env.VERSION != env.LATEST_VERSION }}
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: ${{ env.VERSION }}
+        release_name: Windows Installer for the SageMath ${{ env.VERSION }}
+        body: |
+          After downloading the installer, right-click it to open the context menu and run it with PowerShell.
+          You may also open the installer as a text file, and copy and paste all lines into a PowerShell window.
+
+          The installer should create s shortcut on your desktop for launching SageMath Docker Guide
+        draft: false
+        prerelease: false
+
+    - name: Upload PowerShell script as release asset
+      if: ${{ env.VERSION != env.LATEST_VERSION }}
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ./src/proj_docker_guide_installer.ps1
+        asset_name: proj_docker_guide-${{ env.VERSION }}-installer.ps1
+        asset_content_type: application/octet-stream
