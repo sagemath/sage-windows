@@ -54,6 +54,6 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ./src/proj_docker_guide_installer.ps1
-        asset_name: proj_docker_guide-${{ env.VERSION }}-installer.ps1
+        asset_path: ./src/sagemath_docker_guide_installer.ps1
+        asset_name: sagemath_docker_guide-${{ env.VERSION }}-installer.ps1
         asset_content_type: application/octet-stream

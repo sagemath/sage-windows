@@ -10,7 +10,7 @@ On the other hand, there are cases where Docker can also be interesting for user
 
 A few years ago, [SageMath](https://www.sagemath.org/) offered binaries for Windows built with Cygwin (see for example [this page](https://opendreamkit.org/2017/10/11/SageWindows/)). Currently, the only way to work with SageMath on Windows is using the [Windows Subsystem for Linux](https://learn.microsoft.com/en-us/windows/wsl/) (`WSL`), which also requires some affinity for development.
 
-*Projects Docker Guide* is designed to fill this gap. It helps a user install Docker Desktop and then walks him through using the Docker images offered by your project. The current implementation assumes that this project is SageMath, but project-specific settings are separated from the general code so they can be easily adapted to other cases.
+*Projects Docker Guide* is designed to fill this gap. It helps a user install [Docker for Powershell](https://github.com/soehms/docker_for_powershell) and then walks him through using the Docker images offered by your project. The current implementation assumes that this project is SageMath, but project-specific settings are separated from the general code so they can be easily adapted to other cases.
 
 Please note that this is a pre-release version. Use at your own risk.
 
@@ -18,8 +18,9 @@ Please note that this is a pre-release version. Use at your own risk.
 
 1. [Installation](#1.)
 2. [Usage](#2.)
-    1. [Install Docker Desktop](#2.1)
-    2. [Start Docker engine](#2.2)
+    1. [Install Docker for Powershell](#2.1)
+       1. [Install the Windows Subsystem for Linux](#2.1.1)
+    2. [Start Docker daemon](#2.2)
     3. [Downloading SageMath](#2.3)
     4. [Creating a session](#2.4)
     5. [Connecting to a session](#2.5)
@@ -30,8 +31,9 @@ Please note that this is a pre-release version. Use at your own risk.
     7. [Delete software versions](#2.7)
     8. [Using optional SageMath packages](#2.8)
 3. [Uninstallation](#3.)
-    1. [Continue using Docker Desktop](#3.1)
-    2. [Remove Docker Desktop](#3.2)
+    1. [Continue using Docker for Powershell](#3.1)
+    2. [Remove Docker for Powershell](#3.2)
+        1. [Remove the Windows Subsystem for Linux](#3.2.1)
 4. [Usage on Linux](#4.)
 5. [Help](#5.)
 
@@ -41,72 +43,69 @@ Download [sagemath_docker_guide-installer](https://github.com/soehms/projects_do
 
 ![Run with Powershell](screenshots/sagemath_docker_guide/RunWithPowershell.png)
 
-After that, you should see a SageMath icon (labeled *SageMath Docker Guide*) on your desktop.
+If you're asked if you want to agree to open the file, just do so! If that doesn't work, open a Powershell terminal (i.e. press the Windows key, type "powershell" in the search box, and launch the suggested app). Run the following code there:
 
-![Installation of SageMath Docker Guide](screenshots/sagemath_docker_guide/InstallGuide.png)
+```
+Set-ExecutionPolicy Bypass -Scope  Process -Force
+.\Downloads\sagemath_docker_guide-0.2-installer.ps1
+```
 
-Simply click on the icon to launch the application.
+This assumes that you have downloaded the installer to your default `Downloads` folder. You will also need to replace the version number with the current one. If you get the following screen, answer "Yes":
+
+![Installation of SageMath Docker Guide](screenshots/sagemath_docker_guide/SetExecutionPolicy.png)
+
+If the installation was successful, you should see a SageMath icon (labeled *SageMath Docker Guide*) on your desktop. Simply click on the icon to launch the application.
+
+![Launch SageMath Docker Guide](screenshots/sagemath_docker_guide/IconInstalled.png)
 
 ## 2. Usage <a name="2."></a>
 
 After you have clicked on the SageMath Docker Guide icon the following will happen:
 
-### 2.1 Install Docker Desktop <a name="2.1"></a>
+### 2.1 Install Docker for Powershell <a name="2.1"></a>
 
-If you already have Docker Desktop on your computer, you can [skip this section](#2.2).
+If you already have [Docker for Powershell](https://github.com/soehms/docker_for_powershell#docker-for-powershell) on your computer, you can [skip this section](#2.2). Alternatively (for advanced users), if you have a [WSL](https://learn.microsoft.com/en-us/windows/wsl/)-distribution (say Ubuntu or something similar) with a working [Docker](https://docs.docker.com/engine/install/ubuntu/) or if you have [Docker Desktop](https://www.docker.com/products/docker-desktop/) you may [skip this section](#2.2), too.
 
-If you don't have Docker Desktop installed yet, you'll see the following screen:
+If you don't have any Docker installed yet, you'll see the following screen:
 
-![Installation step 1](screenshots/sagemath_docker_guide/Installation1.png)
+![Installation needed](screenshots/sagemath_docker_guide/DockerForPowershellMissing.png)
 
 After you accept to start the installation, the following hint will appear:
 
-![Installation step 2](screenshots/sagemath_docker_guide/Installation2.png)
+![Installation start](screenshots/sagemath_docker_guide/DockerForPowershellInstallStart.png)
 
-The installer itself will also ask you for your consent:
+#### 2.1.1 Install the Windows Subsystem for Linux <a name="2.1.1"></a>
 
-![Installation step 3](screenshots/sagemath_docker_guide/Installation3.png)
+*Docker for Powershell* needs the *Windows Subsystem for Linux* (`WSL`). If this is present on your system you may [skip this section](#2.2). If not the installer tries to set this up.
 
-The installation of Docker Desktop will take some time. At the end you will be asked to restart your computer:
+![Installation progress](screenshots/sagemath_docker_guide/WSL-InstallProgress.png)
 
-![Installation step 4](screenshots/sagemath_docker_guide/Installation4.png)
+During the process you must grant the following permissions:
 
-After your computer boots back up, Docker Desktop will ask you to accept a *Subscription Service Agreement*:
+![WSL install agreement](screenshots/sagemath_docker_guide/WSLinstallAgreement.png) ![WSL install agreement](screenshots/sagemath_docker_guide/WSLinstallAgreement2.png)
 
-![Subscription Service Agreement](screenshots/sagemath_docker_guide/Agreement.png)
+After the installation of `WSL` is finished you have to reboot your computer:
 
-![Finshing](screenshots/sagemath_docker_guide/Finish.png)
+![Reboot](screenshots/sagemath_docker_guide/WSLreboot.png)
 
-The next agreement you will be asked for will appear on this screen:
+If your computer is up again, click on the *SageMath Docker Guide* icon once more to continue the installation of Docker for Powershell. In rare cases you will see a screen like this:
 
-![Docker Desktop Privileged Helper](screenshots/sagemath_docker_guide/PrivilegedHelper.png)
-
-Docker Desktop will then ask you some questions that you can skip:
-
-![Welcome to Docker](screenshots/sagemath_docker_guide/WelcomeDocker.png)
-
-Finally, it will try to start the *Docker Engine*, which is the only thing needed for the *Projects Docker Guide*. If it fails, you will see a screen like this:
-
-![Unexpected WSL error](screenshots/sagemath_docker_guide/UnexpectedWSLerror.png)
+![CPU virtualization](screenshots/sagemath_docker_guide/BIOSnotEnabled.png)
 
 This most likely happens if your CPU virtualization technology is not enabled in your BIOS setup. In this case, try to find help on [this site](https://support.microsoft.com/en-us/windows/enable-virtualization-on-windows-c5578302-6e43-4b4b-a449-8ced115f58e1).
-If this does not solve the problem, you should follow the instructions in the [Docker documentation](https://docs.docker.com/desktop/install/windows-install/).
 
 [Go back to the Table of Contents](#TOF)
 
-### 2.2 Start Docker engine <a name="2.2"></a>
+### 2.2 Start Docker daemon <a name="2.2"></a>
 
-If your computer starts Docker Desktop automatically when it boots, you can [skip this section](#2.3).
+If Docker starts automatically when you boot your computer, you can [skip this section](#2.3). If the Docker daemon is not already running, you will see the following screen:
 
-If the Docker engine is not already running, you will see the following screen:
+![Deamon not running](screenshots/sagemath_docker_guide/DaemonNotRunningAfterInstall.png)
 
-![Deamon not running](screenshots/sagemath_docker_guide/DeamonNotRunning.png)
-
-Just wait until the Docker Desktop app opens and shows that the engine is running (green icon in the bottom left corner of the window), then click *Retry* (in the screenshot *Wiederholen* in german). As soon as a window titled *SageMath Docker Guide ...* opens you may close the Docker Desktop app:
-
-![Installation success](screenshots/sagemath_docker_guide/InstallationSuccess.png)
+Click *Retry* until the popup message disappears.
 
 [Go back to the Table of Contents](#TOF)
+
 
 ### 2.3 Downloading SageMath <a name="2.3"></a>
 
@@ -120,11 +119,11 @@ The first line takes you to the stable software versions of SageMath, the second
 
 ![List of download versions](screenshots/sagemath_docker_guide/ListOfDownloadVersions.png)
 
-Again select the line of your choice and press OK. The download progress will be displayed in a separate window. The following screenshot is from the download of version 10.5.beta3 of the SageMath development version:
+Again select the line of your choice and press OK. The download progress will be displayed in a separate window.
 
-![Download development version](screenshots/sagemath_docker_guide/DownloadDev.png)
+![Download development version](screenshots/sagemath_docker_guide/DownloadingSagemath10.4.png)
 
-Depending on the quality of your internet connection, this may take some time. If you interrupt it, it will resume from where you interrupted it when you restart the SageMath Docker Guide:
+Depending on the quality of your internet connection, this may take some time. If you interrupt it, it will resume from where you interrupted it when you restart the SageMath Docker Guide as in this eaxmple:
 
 ![Download Computop repeated](screenshots/sagemath_docker_guide/DownloadComputopRepeated.png)
 
@@ -167,7 +166,7 @@ The last part of the name is just a sequential number.
 
 When you see the *List of sessions ...* window, you are ready to start working with SageMath. Simply select the session you want to connect and press OK.
 
-### 2.5.1 IPython terminal <a name="2.5.1"></a>
+#### 2.5.1 IPython terminal <a name="2.5.1"></a>
 
 If the session name is prefixed with "S-", a new terminal will open at the Sage prompt. Follow the [SageMath documentation](https://doc.sagemath.org/) to use SageMath.
 
@@ -184,7 +183,7 @@ In SageMath you can use `ls` to view the files in your folder. In the case of th
 
 [Go back to the Table of Contents](#TOF)
 
-### 2.5.2 Jupyter notebook <a name="2.5.2"></a>
+#### 2.5.2 Jupyter notebook <a name="2.5.2"></a>
 
 If the session name is prefixed with `N-`, a new tab titled *Home* will open in your default browser, displaying the list of files in your folder. If this is the first time connecting to the session, this may take a few seconds.
 
@@ -214,7 +213,7 @@ For more information on using Jupyter notebooks, see their [documentation](https
 
 [Go back to the Table of Contents](#TOF)
 
-### 2.5.3 Bash terminal <a name="2.5.3"></a>
+#### 2.5.3 Bash terminal <a name="2.5.3"></a>
 
 Sessions prefixed with `B-` require some experience with Linux operating systems. This session type is automatically set for repositories other than `sagemath/sagemath`:
 
@@ -286,21 +285,38 @@ Note that you cannot install all kinds of optional packages in `S-` and `N-` ses
 
 ## 3. Uninstallation <a name="3."></a>
 
-The *SageMath Docker Guide* itself hardly takes up any space on your hard drive. The *Docker Desktop* app takes up much more space. However, this is not the majority of the space that may be used. Most of it is due to the use of the software, namely downloading the SageMath software as described in section 2.3.
+The *SageMath Docker Guide* itself hardly takes up any space on your hard drive. The underlying *Docker for Powershell* takes up some more space (about 0.3 GB plus 1.7 GB for `WSL`). However, this is not the majority of the space that may be used. Most of it is due to the use of the software, namely downloading the SageMath software as described in section 2.3.
 
-The most important thing to free up occupied space is therefore to remove these software versions from your computer. The size they take up on your device is indicated in the *List of software that have been downloaded*. To delete them, follow section 2.7. After that, do the following:
+The most important thing to free up occupied space is therefore to remove these software versions from your computer. The size they take up on your device is indicated in the *List of software that have been downloaded*. To delete them, follow [section 2.7](#2.7). After that, do the following:
 
-### 3.1 Continue using Docker Desktop <a name="3.1"></a>
+### 3.1 Continue using Docker for Powershell <a name="3.1"></a>
 
-If you no longer want to use *SageMath Docker Guide* but want to keep *Docker Desktop*, delete all downloaded SageMath software as described above. You can also delete the SageMath Docker Guide desktop icon if you want. That's all you need to do to free up used space.
+If you no longer want to use *SageMath Docker Guide* but want to keep *Docker for Powershell*, delete all downloaded SageMath software as described above. You can also delete the SageMath Docker Guide desktop icon if you want. That's all you need to do to free up used space.
 
-### 3.2 Remove Docker Desktop <a name="3.2"></a>
+### 3.2 Remove Docker for Powershell <a name="3.2"></a>
 
-If you don't like to use *Docker Desktop* any more, in addition to the steps above, go to the Windows software uninstall page and search for *Docker Desktop*:
+If you don't like to use *Docker for Powershell* any more, open a Powershell terminal as described in [section 1](#1.). To see the explicit name of the `WSL` distribution including the version number type
 
-![Uninstall Docker Desktop](screenshots/sagemath_docker_guide/UninstallDockerDesktop.png)
+```
+wsl -l -q
+```
 
-To get there hit the Windows key, type `uninstall` into the search field and launch the suggested app. To start the uninstallation, click on the three point and select `uninstall` and follow the instructions of the uninstaller.
+You can remove it by:
+
+```
+wsl --unregister DockerForPowershell-0.2
+```
+
+Replace the version number `0.2` by the one displayed in your terminal above.
+
+#### 3.2.1 Remove `WSL` <a name="3.2.1"></a>
+
+If *Docker for Powershell* was the only `WSL` distribution you had on your system you may want to remove `WSL`, too. To do this open a Powershell terminal as before and type:
+
+```
+wsl --uninstall
+```
+
 
 [Go back to the Table of Contents](#TOF)
 
@@ -312,7 +328,7 @@ Next, start Powershell (for example, by typing `pwsh` in a bash terminal) and ca
 
 You also need to install Docker. If you don't have it, follow the instructions on the appropriate [Docker installation page](https://docs.docker.com/desktop/install/linux/).
 
-Instead of following the installation instructions for Windows as described in [Section 1.](#1.), simply download the file [sagemath_docker_guide.ps1](https://raw.githubusercontent.com/sagemath/sage-windows/refs/heads/main/src/sagemath_docker_guide.ps1) to the folder where you want to work with SageMath. After starting Powershell there, you can start the guide by executing `.\sagemath_docker_guide.ps1`.
+Instead of following the installation instructions for Windows as described in [section 1](#1.), simply download the files [sagemath_docker_guide.ps1](https://raw.githubusercontent.com/soehms/projects_docker_guide/refs/heads/main/src/sagemath_docker_guide.ps1) and [proj_docker_guide.psm1](https://raw.githubusercontent.com/soehms/projects_docker_guide/refs/heads/main/src/proj_docker_guide.psm1) to the folder where you want to work with SageMath. After starting Powershell there, you can start the guide by executing `.\sagemath_docker_guide.ps1`.
 
 The main difference from using it on Windows is the appearance of the selection windows. On Linux they look like the following example:
 
@@ -322,4 +338,4 @@ Here you have to select a line with the space key and then press Enter.
 
 ## 5. Help <a name="5."></a>
 
-It would be great if this code made it easier for many Windows users to use SageMath. But of course there is still a lot of work to do to achieve this goal. In particular, this cannot be done by one person alone. Therefore, any help is very welcome. This can be suggestions or bug reports. Please use the [issues](https://github.com/sagemath/sage-windows/issues) of this repository. But [pull requests](https://github.com/sagemath/sage-windows/pulls) that fix bugs, improve wording or implementation, or add more features, or even provide better screenshots (in english) are also welcome.
+It would be great if this code made it easier for many Windows users to use SageMath. But of course there is still a lot of work to do to achieve this goal. In particular, this cannot be done by one person alone. Therefore, any help is very welcome. This can be suggestions or bug reports. Please use the [issues](https://github.com/soehms/projects_docker_guide/issues) of this repository. But [pull requests](https://github.com/soehms/projects_docker_guide/pulls) that fix bugs, improve wording or implementation, or add more features, or even provide better screenshots (in english) are also welcome.
