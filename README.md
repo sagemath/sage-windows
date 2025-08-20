@@ -10,5 +10,6 @@ Here we plan a new start. We follow four approaches:
 * B) is developed in connection with the [sage-binder](https://github.com/sagemath/sage-binder-env/) project. It installs a Sage release as a custom WSL distribution. To figure out how it works, follow [these instructions](https://github.com/sagemath/sage-binder-env/releases/tag/v10.5).
 * C) is developed as an example for a [projects docker guide](https://github.com/soehms/projects_docker_guide/). It installs Sage via Docker in a custom WSL distribution which is independent of the Sage release. To figure out how it works, follow [these instructions](https://github.com/soehms/projects_docker_guide/#1.).
 * D) is developed as a native Windows build of Sage using meson (see sagemath/sage#38872). There is no installer for testing yet.
+* E) is developed as an [AppImage](https://en.wikipedia.org/wiki/AppImage). Similar to A-C, it depends on the availability of WSL. A `manylinux2014`-compatible Linux distribution is required. To figure out how it works, follow [these instructions](https://github.com/3-manifolds/sage_appimage/releases).
 
 Any help with our project is welcome. Feel free to open issues in this repo to document your testing experiences or post your suggestions and criticism.
